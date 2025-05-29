@@ -1,0 +1,58 @@
+{
+    "features": [
+        {
+            "icon": "fas fa-bullhorn",
+            "title": "Instant Reporting",
+            "description": "Quickly report potholes, broken streetlights, or any public issue directly from your device."
+        },
+        {
+            "icon": "fas fa-wallet",
+            "title": "Bill Payments",
+            "description": "Securely pay municipal bills like property tax or water charges with a few taps."
+        },
+        {
+            "icon": "fas fa-concierge-bell",
+            "title": "Service Requests",
+            "description": "Request services such as bulk waste pickup or tree trimming effortlessly."
+        },
+        {
+            "icon": "fas fa-comments",
+            "title": "Community Forum",
+            "description": "Connect with neighbours, discuss local topics, and stay informed about community events."
+        },
+        {
+            "icon": "fas fa-map-marked-alt",
+            "title": "Local Information",
+            "description": "Access important local information, news, and emergency alerts in one place."
+        },
+        {
+            "icon": "fas fa-tasks",
+            "title": "Track Progress",
+            "description": "Monitor the status of your reports and requests in real-time."
+        }
+    ],
+    "issueTypes": [
+        "Pothole",
+        "Broken Streetlight",
+        "Waste Management",
+        "Water Leak",
+        "Park Maintenance",
+        "Noise Complaint",
+        "Public Safety Concern",
+        "Other"
+    ],
+    "testimonials": [
+        {
+            "quote": "Vigihood made reporting a fallen tree so easy! It was cleared within a day. Amazing!",
+            "author": "Sarah L., Green Valley Resident"
+        },
+        {
+            "quote": "Paying my local taxes through the app was a breeze. No more long queues!",
+            "author": "John B., Oakwood Citizen"
+        },
+        {
+            "quote": "I love how connected I feel to my community now. The forum is great for local updates.",
+            "author": "Maria P., Lakeside Neighbourhood"
+        }
+    ]
+}
