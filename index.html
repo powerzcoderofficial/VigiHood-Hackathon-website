@@ -1,112 +1,143 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light"> <!-- Default theme -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigihood - Your Digital Neighbourhood Assistant</title>
+    <title>VigeHood - Citizen Empowerment Platform</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="theme-switcher-container">
-        <label class="theme-switch" for="theme-toggle">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider round">
-                <span class="icon sun"><i class="fas fa-sun"></i></span>
-                <span class="icon moon"><i class="fas fa-moon"></i></span>
-            </span>
-        </label>
-    </div>
+<body class="logged-out"> <!-- Class will be toggled by JS -->
 
-    <!-- Added hero-glow-container for the atmospheric glow -->
-    <header class="hero-glow-container">
-        <nav>
-            <div class="logo">VigiHood</div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#report-issue" class="cta-nav">Report an Issue</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+
+                        <!-- Auth-dependent Links -->
+                        <li class="nav-auth-item protected"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li class="nav-auth-item protected"><a href="awards.html"><i class="fas fa-trophy"></i> Awards</a></li>
+                        <li class="nav-auth-item protected"><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li class="nav-auth-item protected"><a href="#" id="signout-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                        <!-- End Auth-dependent Links -->
+
+                        <li><a href="api.html"><i class="fas fa-code"></i> API</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                        <li><a href="next-ai.html"><i class="fas fa-brain"></i> N3XT AI</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-        </nav>
-        <div class="hero-content">
-            <h1 class="hero-h1-glow">Empowering Your Neighbourhood, Digitally.</h1>
-            <p class="text-to-reveal-static">Vigihood connects you with your municipality, making community life smoother and more responsive. Report, pay, request – all in one place.</p>
-            <a href="#report-issue" class="cta-button">Get Started</a>
         </div>
     </header>
 
-    <main>
-        <section id="features" class="content-section">
-            <h2>Key Features</h2>
+    <!-- Hero Section (from previous response) -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering Citizens to Voice Problems to Municipalities Easily</h1>
+                <p>Your platform to report civic issues and get them resolved quickly. Together, we can build better communities.</p>
+                <a href="report-issue.html" class="cta-button">Raise an Issue <i class="fas fa-arrow-right" style="margin-left: 8px; font-size: 0.9em;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (from previous response) -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How VigeHood Works</h2>
             <div class="features-grid">
-                <!-- Features will be loaded here by JS from data.json -->
-            </div>
-        </section>
-
-        <section id="how-it-works" class="content-section alt-bg">
-            <h2>Simple & Efficient</h2>
-            <div class="steps-container">
-                <div class="step fade-in">
-                    <div class="step-icon"><i class="fas fa-mouse-pointer"></i></div>
-                    <h3>1. Identify</h3>
-                    <p class="text-to-reveal-static">Notice an issue or need in your neighbourhood.</p>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Select Municipality</h3>
+                    <p>Choose from our list of supported municipalities across India.</p>
                 </div>
-                <div class="step fade-in">
-                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>2. Report/Request</h3>
-                    <p class="text-to-reveal-static">Use Vigihood to quickly submit details.</p>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-edit"></i></div>
+                    <h3>Report Your Issue</h3>
+                    <p>Fill out our simple form to report your civic issue with details.</p>
                 </div>
-                <div class="step fade-in">
-                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
-                    <h3>3. Resolve</h3>
-                    <p class="text-to-reveal-static">Track progress and see your community improve.</p>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tasks-alt"></i></div>
+                    <h3>Get Resolution</h3>
+                    <p>Track your issue status and get notified when it's resolved.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="report-issue" class="content-section">
-            <h2>Report an Issue</h2>
-            <form id="issue-form">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" required>
-                    <label for="name">Full Name</label>
+    <!-- Municipalities Section (from previous response, but link to report-issue.html or internal logic) -->
+    <section id="municipalities" class="municipalities">
+        <div class="container">
+            <h2 class="section-title">Supported Municipalities</h2>
+            <div class="search-box">
+                <input type="text" id="municipality-search" placeholder="Search for your city or municipality...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="municipality-grid">
+                <!-- Example Card: Clicking this would ideally pre-fill on report-issue.html or be part of a flow -->
+                <div class="municipality-card" data-value="Mumbai Municipal Corporation" onclick="location.href='report-issue.html?municipality=Mumbai+Municipal+Corporation'">
+                    <h3>Mumbai Municipal Corporation</h3>
+                    <p>Maharashtra</p>
+                    <div class="email"><i class="fas fa-envelope" style="margin-right: 5px;"></i>contact@mumbaicity.gov.in</div>
                 </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" required>
-                    <label for="email">Email Address</label>
-                </div>
-                <div class="form-group">
-                    <select id="issue-type" name="issue-type" required>
-                        <option value="" disabled selected>Select Issue Type</option>
-                    </select>
-                </div>
-                 <div class="form-group">
-                    <input type="text" id="location" name="location" required>
-                    <label for="location">Location of Issue (e.g., Street, Park Name)</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="description" name="description" rows="4" required></textarea>
-                    <label for="description">Describe the Issue</label>
-                </div>
+                <!-- Add other municipality cards -->
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="report-issue.html" class="cta-button" style="background-image: linear-gradient(45deg, var(--primary), var(--primary-light));">Report an Issue Now</a>
+            </div>
+        </div>
+    </section>
 
-                <button type="submit" class="cta-button form-submit-button">Submit Report</button>
-                <p id="form-status" class="form-status-message"></p>
-            </form>
-        </section>
-    </main>
-
+    <!-- Footer (from previous response) -->
     <footer>
-        <p>© 2024 Vigihood. Helping Neighbourhoods Thrive.</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo"><i class="fas fa-bullhorn"></i><span>VigeHood</span></div>
+                    <p>Empowering citizens to make their voices heard and create better communities through transparent civic engagement.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="report-issue.html"><i class="fas fa-chevron-right"></i> Raise Issue</a></li>
+                        <li><a href="docs.html"><i class="fas fa-chevron-right"></i> How it Works</a></li>
+                        <li><a href="api.html"><i class="fas fa-chevron-right"></i> API Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Civic Center, New Delhi, India</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> contact@vigehood.in</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM IST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Made with <i class="fas fa-heart"></i> at Hackathon | © <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

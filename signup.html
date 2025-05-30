@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="logged-out">
+
+    <!-- Header (Minimal or full) -->
+    <header>
+         <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                 <nav id="main-nav"> <!-- Keep consistent nav for UX -->
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                <h2 class="auth-title">Create Your Account</h2>
+                <p class="auth-subtitle">Join VigeHood to make your voice heard!</p>
+
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Choose a strong password" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" required>
+                    </div>
+                    <div class="form-group" style="font-size: 0.85rem; text-align:center;">
+                        <input type="checkbox" id="terms" name="terms" required style="width: auto; margin-right: 0.5rem;">
+                        <label for="terms" style="font-weight: normal; display: inline;">I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>.</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Sign Up</button>
+                </form>
+                <p class="auth-link">Already have an account? <a href="signin.html">Sign In</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Minimal or full) -->
+     <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 1rem;">
+                <p>© <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="toast" id="toast" role="alert" aria-live="assertive">
+        <i class=""></i> <div class="toast-content"><h4 id="toast-title"></h4><p id="toast-message"></p></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Page-specific JS for signup.html
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signup-form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const fullname = document.getElementById('fullname').value;
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+                    const terms = document.getElementById('terms').checked;
+
+                    if (password !== confirmPassword) {
+                        showToast('Error', 'Passwords do not match.', 'error');
+                        return;
+                    }
+                    if (!terms) {
+                        showToast('Error', 'You must agree to the terms and conditions.', 'error');
+                        return;
+                    }
+
+                    // ** SIMULATED SIGN UP **
+                    // In a real app, send this to your backend API to create user in MongoDB
+                    // fetch('/api/auth/signup', { method: 'POST', body: JSON.stringify({fullname, email, password}), headers: {'Content-Type': 'application/json'} })
+                    // .then(res => res.json())
+                    // .then(data => { if(data.success) { showSuccessAndRedirect(); } else { showError(data.message); } })
+                    // .catch(err => showError());
+
+                    console.log('Attempting sign up for:', fullname, email);
+                    showToast('Account Created!', 'Welcome! Please sign in to continue.', 'success');
+                    // Simulate successful signup and redirect to signin page
+                    setTimeout(() => {
+                        window.location.href = 'signin.html';
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

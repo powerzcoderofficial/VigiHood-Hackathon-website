@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="logged-out"> <!-- Class will be toggled by JS -->
+
+    <!-- Header (same as index.html, active class logic for current page) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                <nav id="main-nav">
+                     <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+
+                        <li class="nav-auth-item protected"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li class="nav-auth-item protected"><a href="awards.html"><i class="fas fa-trophy"></i> Awards</a></li>
+                        <li class="nav-auth-item protected"><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li class="nav-auth-item protected"><a href="#" id="signout-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+
+                        <li><a href="api.html" class="active"><i class="fas fa-code"></i> API</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                        <li><a href="next-ai.html"><i class="fas fa-brain"></i> N3XT AI</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="api-docs-section" style="padding-top: 40px;">
+        <div class="container">
+            <h1 class="section-title" style="text-align: left; margin-bottom: 2rem;">VigeHood Developer API</h1>
+            <div class="content-page-layout">
+                <aside class="content-sidebar">
+                    <h3>API Endpoints</h3>
+                    <ul>
+                        <li><a href="#introduction" class="active">Introduction</a></li>
+                        <li><a href="#authentication">Authentication</a></li>
+                        <li><a href="#get-issues">Get Issues</a></li>
+                        <li><a href="#submit-issue">Submit Issue</a></li>
+                        <li><a href="#rate-limiting">Rate Limiting</a></li>
+                        <li><a href="#status-codes">Status Codes</a></li>
+                    </ul>
+                </aside>
+                <main class="content-main">
+                    <article id="introduction">
+                        <h2>Introduction</h2>
+                        <p>Welcome to the VigeHood API! Our API allows developers to interact with the VigeHood platform programmatically. You can retrieve issue data, submit new issues (with proper authentication), and integrate VigeHood's functionalities into your own applications.</p>
+                        <p>The base URL for all API endpoints is: <code>https://api.vigehood.example.com/v1</code></p>
+                    </article>
+
+                    <article id="authentication" style="margin-top: 2rem;">
+                        <h2>Authentication</h2>
+                        <p>Most API endpoints require authentication. We use API Keys for authentication. Include your API key in the <code>Authorization</code> header as a Bearer token:</p>
+                        <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                        <p>You can generate and manage your API keys from your developer dashboard (once available).</p>
+                    </article>
+
+                     <article id="get-issues" style="margin-top: 2rem;">
+                        <h2>Get Issues</h2>
+                        <p>Retrieve a list of public civic issues.</p>
+                        <p><strong>Endpoint:</strong> <code>GET /issues</code></p>
+                        <p><strong>Query Parameters:</strong></p>
+                        <ul>
+                            <li><code>municipality</code> (string, optional): Filter by municipality name.</li>
+                            <li><code>status</code> (string, optional): Filter by status (e.g., 'pending', 'resolved').</li>
+                            <li><code>limit</code> (int, optional, default: 20): Number of results per page.</li>
+                            <li><code>page</code> (int, optional, default: 1): Page number for pagination.</li>
+                        </ul>
+                        <p><strong>Example Request:</strong></p>
+                        <pre><code>GET /issues?municipality=Mumbai&status=pending&limit=10</code></pre>
+                        <p><strong>Example Response:</strong></p>
+                        <pre><code>{
+  "success": true,
+  "data": [
+    {
+      "id": "issue_123",
+      "title": "Pothole on Main St",
+      "municipality": "Mumbai",
+      "status": "pending",
+      "submitted_at": "2023-10-26T10:00:00Z"
+    }
+    // ... more issues
+  ],
+  "pagination": {
+    "total": 150,
+    "limit": 10,
+    "page": 1,
+    "totalPages": 15
+  }
+}</code></pre>
+                    </article>
+                    <!-- Add more articles for other endpoints -->
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="container">
+            <!-- ... footer content ... -->
+             <div class="footer-bottom">
+                <p>Made with <i class="fas fa-heart"></i> at Hackathon | © <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Smooth scroll for sidebar links and active state
+        document.querySelectorAll('.content-sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.content-sidebar a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth', block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

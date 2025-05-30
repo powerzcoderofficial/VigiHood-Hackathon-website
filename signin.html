@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="logged-out">
+
+    <!-- Header (Minimal or full, depending on preference) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                 <nav id="main-nav"> <!-- Keep consistent nav for UX -->
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                <h2 class="auth-title">Welcome Back!</h2>
+                <p class="auth-subtitle">Sign in to access your dashboard and track issues.</p>
+
+                <form id="signin-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <a href="#" style="font-size: 0.85rem; display: block; text-align: right; margin-top: 0.5rem;">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="submit-btn">Sign In</button>
+                </form>
+                <p class="auth-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Minimal or full) -->
+     <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 1rem;">
+                <p>© <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="alert" aria-live="assertive">
+        <i class=""></i> <div class="toast-content"><h4 id="toast-title"></h4><p id="toast-message"></p></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Page-specific JS for signin.html
+        document.addEventListener('DOMContentLoaded', function() {
+            const signinForm = document.getElementById('signin-form');
+            if (signinForm) {
+                signinForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+
+                    // ** SIMULATED SIGN IN **
+                    // In a real app, send this to your backend API:
+                    // fetch('/api/auth/signin', { method: 'POST', body: JSON.stringify({email, password}), headers: {'Content-Type': 'application/json'} })
+                    // .then(res => res.json())
+                    // .then(data => { if(data.success) { loginUser(data.token, data.user); } else { showError(); } })
+                    // .catch(err => showError());
+
+                    console.log('Attempting sign in for:', email);
+                    if (email === "user@example.com" && password === "password123") {
+                        // Simulate successful login
+                        const fakeUserData = { name: "Demo User", email: "user@example.com", id: "123xyz" };
+                        const fakeToken = "fake_jwt_token_for_demo";
+                        
+                        localStorage.setItem('currentUserToken', fakeToken);
+                        localStorage.setItem('currentUser', JSON.stringify(fakeUserData));
+                        
+                        updateAuthUI(); // This function should be in script.js to update nav and body class
+                        showToast('Login Successful!', 'Welcome back! Redirecting to dashboard...', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1500);
+                    } else {
+                         showToast('Login Failed', 'Invalid email or password. Please try again.', 'error');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

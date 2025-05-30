@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="logged-out"> <!-- Class will be toggled by JS -->
+
+    <!-- Header (same as index.html, ensure active class is correct for this page if needed) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                <nav id="main-nav">
+                     <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html" class="active"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+
+                        <li class="nav-auth-item protected"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li class="nav-auth-item protected"><a href="awards.html"><i class="fas fa-trophy"></i> Awards</a></li>
+                        <li class="nav-auth-item protected"><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li class="nav-auth-item protected"><a href="#" id="signout-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+
+                        <li><a href="api.html"><i class="fas fa-code"></i> API</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                        <li><a href="next-ai.html"><i class="fas fa-brain"></i> N3XT AI</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+<section class="api-docs-section" style="padding-top: 40px;">
+    <div class="container">
+        <h1 class="section-title" style="text-align: left; margin-bottom: 2rem;">VigeHood User Documentation</h1>
+        <div class="content-page-layout">
+            <aside class="content-sidebar">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="#creating-account" class="active">Creating an Account</a></li>
+                    <li><a href="#reporting-issue">Reporting an Issue</a></li>
+                    <li><a href="#tracking-issues">Tracking Your Issues</a></li>
+                    <li><a href="#understanding-statuses">Understanding Issue Statuses</a></li>
+                </ul>
+                <h3>FAQs</h3>
+                <ul>
+                    <li><a href="#faq-supported-areas">What areas are supported?</a></li>
+                    <li><a href="#faq-response-time">How long for a response?</a></li>
+                </ul>
+            </aside>
+            <main class="content-main">
+                <article id="creating-account">
+                    <h2>Creating an Account</h2>
+                    <p>To get the most out of VigeHood, create an account. This allows you to track your submitted issues, earn awards, and manage your profile.</p>
+                    <ol>
+                        <li>Navigate to the <a href="signup.html">Sign Up page</a>.</li>
+                        <li>Fill in your full name, email address, and choose a secure password.</li>
+                        <li>Agree to the Terms of Service and Privacy Policy.</li>
+                        <li>Click "Sign Up". You may need to verify your email address.</li>
+                    </ol>
+                </article>
+                <!-- More articles -->
+            </main>
+        </div>
+    </div>
+</section>
+<!-- (JS for sidebar scroll as in api.html) -->

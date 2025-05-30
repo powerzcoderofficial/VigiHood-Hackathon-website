@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="logged-in protected-page"> <!-- Add protected-page for JS check -->
+
+    <!-- Header (same as index.html, active class logic for current page) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                <nav id="main-nav">
+                     <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+
+                        <li class="nav-auth-item protected"><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li class="nav-auth-item protected"><a href="awards.html"><i class="fas fa-trophy"></i> Awards</a></li>
+                        <li class="nav-auth-item protected"><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li class="nav-auth-item protected"><a href="#" id="signout-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+
+                        <li><a href="api.html"><i class="fas fa-code"></i> API</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                        <li><a href="next-ai.html"><i class="fas fa-brain"></i> N3XT AI</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="dashboard-section" style="padding-top: 40px;"> <!-- Reduced top padding as header is sticky -->
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2rem; margin-bottom: 0;">Welcome, <span id="dashboard-username">User</span>!</h1>
+                <a href="report-issue.html" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">
+                    <i class="fas fa-plus-circle" style="margin-right: 0.5rem;"></i>Report New Issue
+                </a>
+            </div>
+
+            <h2 class="section-title" style="text-align: left; font-size: 1.75rem; margin-bottom: 1.5rem;">Your Activity Overview</h2>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="stat-card-info">
+                        <h4 id="issues-submitted">5</h4>
+                        <p>Issues Submitted</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-check-circle" style="color: var(--secondary);"></i></div>
+                    <div class="stat-card-info">
+                        <h4 id="issues-resolved">2</h4>
+                        <p>Issues Resolved</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-hourglass-half" style="color: var(--accent);"></i></div>
+                    <div class="stat-card-info">
+                        <h4 id="issues-pending">3</h4>
+                        <p>Issues Pending</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fas fa-medal" style="color: #FFD700;"></i></div> <!-- Gold color -->
+                    <div class="stat-card-info">
+                        <h4 id="awards-earned">1</h4>
+                        <p>Awards Earned</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="text-align: left; font-size: 1.75rem; margin-top: 3rem; margin-bottom: 1.5rem;">Recent Issues</h2>
+            <div class="profile-section" style="padding: 0;"> <!-- Reusing profile section for list style -->
+                <div id="recent-issues-list">
+                    <!-- Issues will be populated by JS -->
+                    <div class="issue-list-item">
+                        <div>
+                            <div class="title">Pothole on Elm Street</div>
+                            <small style="color: var(--gray);">Submitted: 2 days ago</small>
+                        </div>
+                        <span class="status pending">Pending</span>
+                    </div>
+                    <div class="issue-list-item">
+                        <div>
+                            <div class="title">Streetlight out near park</div>
+                             <small style="color: var(--gray);">Submitted: 1 week ago</small>
+                        </div>
+                        <span class="status resolved">Resolved</span>
+                    </div>
+                     <!-- Placeholder if no issues -->
+                     <!-- <p style="padding: 1rem; text-align:center; color: var(--gray);">No recent issues found. <a href="report-issue.html">Report one now!</a></p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="container">
+             <!-- ... footer content ... -->
+            <div class="footer-bottom">
+                <p>Made with <i class="fas fa-heart"></i> at Hackathon | © <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate dashboard with user data (from localStorage for demo)
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser && currentUser.name) {
+                document.getElementById('dashboard-username').textContent = currentUser.name;
+            }
+            // In a real app, fetch this data from your backend.
+            // Example: document.getElementById('issues-submitted').textContent = fetchedData.totalIssues;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="logged-out"> <!-- Class will be toggled by JS -->
+
+    <!-- Header (same as index.html, ensure active class is correct for this page if needed) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                <nav id="main-nav">
+                     <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html" class="active"><i class="fas fa-file-pen"></i> Raise Issue</a></li>
+
+                        <li class="nav-auth-item protected"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li class="nav-auth-item protected"><a href="awards.html"><i class="fas fa-trophy"></i> Awards</a></li>
+                        <li class="nav-auth-item protected"><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li class="nav-auth-item protected"><a href="#" id="signout-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+
+                        <li><a href="api.html"><i class="fas fa-code"></i> API</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                        <li><a href="next-ai.html"><i class="fas fa-brain"></i> N3XT AI</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Issue Form Section (from previous response) -->
+    <section id="raise-issue" class="issue-form-section">
+        <div class="container">
+            <h2 class="section-title">Report a Civic Issue</h2>
+            <div class="form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-file-alt"></i> Raise an Issue Form</h2>
+                </div>
+                <form id="civic-issue-form" class="form-content">
+                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1.5rem; text-align: center;">
+                        Help us improve your community! Please provide as much detail as possible.
+                        <span class="logged-out-note">If you <a href="signin.html">sign in</a> or <a href="signup.html">create an account</a>, you can track your submissions.</span>
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Full Name <span class="auth-field-note">(Required if not signed in)</span></label>
+                            <input type="text" id="fullname" name="fullname" placeholder="e.g., Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email <span class="auth-field-note">(Required if not signed in)</span></label>
+                            <input type="email" id="email" name="email" placeholder="e.g., jane.doe@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject / Title of Issue *</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Pothole on Main Street" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="municipality">Target Municipality *</label>
+                            <select id="municipality" name="municipality" required>
+                                <option value="">Select municipality</option>
+                                <!-- Options populated by JS or from query param -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Issue Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select category</option>
+                                <option value="roads">Roads & Infrastructure</option>
+                                <option value="water">Water Supply</option>
+                                <option value="waste">Waste Management</option>
+                                <option value="electricity">Electricity</option>
+                                <option value="sanitation">Sanitation & Public Health</option>
+                                <option value="parks">Parks & Public Spaces</option>
+                                <option value="stray_animals">Stray Animals</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Problem Description *</label>
+                        <textarea id="description" name="description" placeholder="Describe the issue in detail. Include specific location (street name, landmark), date/time observed if relevant, and any other information that might help." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachment">Attach Photo/Video (Optional, Max 5MB)</label>
+                        <input type="file" id="attachment" name="attachment" accept="image/*,video/*">
+                    </div>
+                    <button type="submit" class="submit-btn" id="submit-issue-btn">Submit Issue <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="container">
+            <!-- ... footer content ... -->
+            <div class="footer-bottom">
+                <p>Made with <i class="fas fa-heart"></i> at Hackathon | © <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive">
+        <i class="fas fa-check-circle"></i>
+        <div class="toast-content">
+            <h4 id="toast-title">Issue Submitted Successfully!</h4>
+            <p id="toast-message">Thank you for reporting. We'll get back to you soon.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Page-specific JS for report-issue.html
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pre-fill municipality from URL query parameter if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const municipalityFromQuery = urlParams.get('municipality');
+            const municipalitySelect = document.getElementById('municipality');
+
+            // Populate municipality dropdown (example data, fetch from API in real app)
+            const municipalities = [
+                "Mumbai Municipal Corporation", "Delhi Municipal Corporation", "Bangalore Mahanagara Palike",
+                "Chennai Corporation", "Kolkata Municipal Corporation", "Hyderabad Municipal Corporation", "Pune Municipal Corporation"
+            ];
+            municipalities.forEach(m => {
+                const option = new Option(m, m);
+                municipalitySelect.add(option);
+            });
+
+            if (municipalityFromQuery && municipalitySelect) {
+                municipalitySelect.value = municipalityFromQuery;
+            }
+
+            // Handle issue form submission
+            const issueForm = document.getElementById('civic-issue-form');
+            if (issueForm) {
+                issueForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Basic validation already handled by 'required' attribute
+                    // In a real app, you'd gather form data:
+                    // const formData = new FormData(issueForm);
+                    // And send it to your backend API
+                    console.log('Issue form submitted (simulated)');
+                    
+                    showToast('Issue Submitted!', 'Your report has been sent for review. If you provided an email, you might receive updates.', 'success');
+                    issueForm.reset();
+                    if (municipalityFromQuery) municipalitySelect.value = municipalityFromQuery; // Re-select if from query
+                });
+            }
+
+            // Show/hide name & email based on login state (from global script.js)
+            function updateAuthFieldsVisibility() {
+                const isLoggedIn = document.body.classList.contains('logged-in');
+                document.querySelectorAll('.auth-field-note').forEach(el => el.style.display = isLoggedIn ? 'none' : 'inline');
+                document.querySelectorAll('.logged-out-note').forEach(el => el.style.display = isLoggedIn ? 'none' : 'block');
+                
+                const nameInput = document.getElementById('fullname');
+                const emailInput = document.getElementById('email');
+                if (isLoggedIn) {
+                    // In a real app, pre-fill with logged-in user's data
+                    // For now, just make them not required and potentially hide/disable
+                    if(nameInput) nameInput.required = false;
+                    if(emailInput) emailInput.required = false;
+                } else {
+                    if(nameInput) nameInput.required = true;
+                    if(emailInput) emailInput.required = true;
+                }
+            }
+            // Call it initially and if auth state changes (via custom event or observer from script.js)
+            updateAuthFieldsVisibility(); 
+            document.addEventListener('authStateChanged', updateAuthFieldsVisibility);
+        });
+    </script>
+</body>
+</html>

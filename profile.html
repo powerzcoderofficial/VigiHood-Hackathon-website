@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue - VigeHood</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="logged-out"> <!-- Class will be toggled by JS -->
+
+    <!-- Header (same as index.html, ensure active class is correct for this page if needed) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="logo-text">VigeHood</div>
+                </a>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="report-issue.html" class="active"><i class="fas fa-file-pen"></i> Raise Issue</a>
+                        </li>
+
+                        <li class="nav-auth-item protected"><a href="dashboard.html"><i
+                                    class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li class="nav-auth-item protected"><a href="awards.html"><i class="fas fa-trophy"></i>
+                                Awards</a></li>
+                        <li class="nav-auth-item protected"><a href="profile.html"><i class="fas fa-user-circle"></i>
+                                Profile</a></li>
+                        <li class="nav-auth-item protected"><a href="#" id="signout-link"><i
+                                    class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
+                        <li class="nav-auth-item public"><a href="signin.html"><i class="fas fa-sign-in-alt"></i> Sign
+                                In</a></li>
+                        <li class="nav-auth-item public"><a href="signup.html"><i class="fas fa-user-plus"></i> Sign
+                                Up</a></li>
+
+                        <li><a href="api.html"><i class="fas fa-code"></i> API</a></li>
+                        <li><a href="docs.html"><i class="fas fa-book"></i> Docs</a></li>
+                        <li><a href="next-ai.html"><i class="fas fa-brain"></i> N3XT AI</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <body class="logged-in protected-page">
+        <div class="profile-header">
+            <div class="container">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i> <!-- Or <img src="avatar.jpg" alt="User Avatar"> -->
+                </div>
+                <h1 class="profile-name" id="profile-page-username">Demo User</h1>
+                <p class="profile-email" id="profile-page-email">user@example.com</p>
+            </div>
+        </div>
+        <section class="profile-content-section">
+            <div class="container profile-content">
+                <div class="profile-section">
+                    <h3>Account Information</h3>
+                    <form id="edit-profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profile-fullname">Full Name</label>
+                                <input type="text" id="profile-fullname" value="Demo User">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-email-field">Email (cannot change)</label>
+                                <input type="email" id="profile-email-field" value="user@example.com" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-bio">Short Bio (Optional)</label>
+                            <textarea id="profile-bio" placeholder="Tell us a bit about yourself..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Changes</button>
+                    </form>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Your Submitted Issues</h3>
+                    <div id="user-issues-list">
+                        <!-- Example, to be populated by JS -->
+                        <div class="issue-list-item">
+                            <div>
+                                <div class="title">Broken swing at Central Park</div>
+                                <small style="color: var(--gray);">Submitted: 5 days ago</small>
+                            </div>
+                            <span class="status pending">Pending</span>
+                        </div>
+                        <div class="issue-list-item">
+                            <div>
+                                <div class="title">Water leakage on 2nd Avenue</div>
+                                <small style="color: var(--gray);">Submitted: 2 weeks ago</small>
+                            </div>
+                            <span class="status resolved">Resolved</span>
+                        </div>
+                        <p style="padding: 1rem; text-align:center; color: var(--gray); display:none;"
+                            id="no-user-issues">You haven't submitted any issues yet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+          <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="container">
+            <!-- ... footer content ... -->
+            <div class="footer-bottom">
+                <p>Made with <i class="fas fa-heart"></i> at Hackathon | © <span id="current-year">2023</span> VigeHood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive">
+        <i class="fas fa-check-circle"></i>
+        <div class="toast-content">
+            <h4 id="toast-title">Issue Submitted Successfully!</h4>
+            <p id="toast-message">Thank you for reporting. We'll get back to you soon.</p>
+        </div>
+    </div>
+    
+        <!-- (JS to populate user data, handle form submission - simulated) -->
+        <script src="script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                if (currentUser) {
+                    document.getElementById('profile-page-username').textContent = currentUser.name || 'User';
+                    document.getElementById('profile-page-email').textContent = currentUser.email || 'Not available';
+                    document.getElementById('profile-fullname').value = currentUser.name || '';
+                    document.getElementById('profile-email-field').value = currentUser.email || '';
+                    // In a real app, fetch bio and submitted issues from backend
+                }
+
+                document.getElementById('edit-profile-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // Simulate saving changes
+                    const newName = document.getElementById('profile-fullname').value;
+                    if (currentUser) {
+                        currentUser.name = newName;
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        document.getElementById('profile-page-username').textContent = newName;
+                        // Also update username in header/dashboard if displayed there
+                        const dashboardUsername = document.getElementById('dashboard-username');
+                        if (dashboardUsername) dashboardUsername.textContent = newName;
+
+                    }
+                    showToast('Profile Updated!', 'Your changes have been saved (locally).', 'success');
+                });
+            });
+        </script>
+    </body>
+    ```
